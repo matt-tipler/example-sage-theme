@@ -40,7 +40,7 @@ jobs:
       with:
         SCRIPT: post-deploy.sh
         WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
-cd 
+        
   php-build:
     runs-on: ubuntu-latest
     container: gjrdiesel/composer-80:alpine
