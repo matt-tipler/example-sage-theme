@@ -41,16 +41,21 @@ jobs:
         SCRIPT: post-deploy.sh
         WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
 
-  php-build:
+php-build:
     runs-on: ubuntu-latest
     container: gjrdiesel/composer-80:alpine
     steps:
-
     - name: Check out the git repo
       uses: actions/checkout@v2
-      
+
     - name: Install Git (if necessary)
       run: apk add --no-cache git
+
+    - name: Debug Information
+      run: |
+        pwd
+        ls -la
+        echo $PATH
 
     - name: Run composer install in theme directory
       run: cd wp-content/themes/${{ env.THEME_NAME }} && composer install && cd -
